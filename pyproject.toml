@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orient-data-selection"
+version = "0.1.0"
+description = "Online reinforcement learning for data selection in MLLM instruction tuning"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "torch>=2.1"]
+
+[project.optional-dependencies]
+training = ["transformers==4.37.2", "accelerate==0.21.0", "Pillow==10.4.0"]
+
+[project.scripts]
+orient-prepare = "orient.prepare:main"
+orient-reference = "orient.reference:main"
+orient-train = "orient.train:main"
+orient-migrate = "orient.migrate:main"
+
+[tool.setuptools.packages.find]
+include = ["orient", "orient.*"]
+
+[tool.setuptools]
+license-files = ["licenses/Apache-2.0.txt", "THIRD_PARTY_NOTICES.md"]
